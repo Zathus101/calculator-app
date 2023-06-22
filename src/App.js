@@ -1,11 +1,10 @@
-
 import './App.css';
-import { Button } from 'react-bootstrap';
+import { Button,Container } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import { NumericFormat } from 'react-number-format';
 import 'bootstrap/dist/css/bootstrap.min.css'
 function App() {
-  
+
   const [before, setBefore] = useState("");
   const [current, setCurrent] = useState("");
   const [input, setInput] = useState("0");
@@ -71,17 +70,19 @@ function App() {
     setCurrent("");
   };
 
-  
+
   const clear = () => {
+    setInput("0")
     setBefore("")
     setCurrent("")
-    setInput("0")
+    
   }
   return (
-    <div class="col"  >
-      <div class="numbers">
-        <div class="digits">
-        {input !== "" || input === "0" ? (
+    
+        <div class="d-flex justify-content-end bg-black text-white" >
+          <div class="row">
+            <div class="d-flex justify-content-end">
+          {input !== "" || input === "0" ? (
             <NumericFormat
               value={input}
               displayType={"text"}
@@ -94,41 +95,43 @@ function App() {
               thousandSeparator={true}
             />
           )}
+            
         </div>
-      </div>
-      <div class="bot-btns">
-        <div id="btn-row1">
-          <Button class="btn btn-secondary btn-lg" disabled onClick={clear}>AC</Button>
-          <Button class="btn btn-secondary btn-lg" disabled aria-pressed="true">+/-</Button>
-          <Button class="btn btn-secondary btn-lg" disabled>%</Button>
-          <Button class="btn btn-warning btn-lg" onClick={operatorType} >÷</Button>
+      <div >
+        <div class="d-flex justify-content-end  " >
+          <Button className="btn btn-secondary btn-lg rounded-circle" onClick={clear}>AC</Button>
+          <Button className="btn btn-secondary btn-lg rounded-circle" >+/-</Button>
+          <Button className="btn btn-secondary btn-lg rounded-circle" >%</Button>
+          <Button className="btn btn-warning btn-lg rounded-circle"   onClick={operatorType} >÷</Button>
         </div>
-        <div id="btn-row2">
-          <Button class="btn btn-secondary btn-lg" onClick={inputNum}>7</Button>
-          <Button class="btn btn-secondary btn-lg" onClick={inputNum}>8</Button>
-          <Button onClick={inputNum}>9</Button>
-          <Button class="btn btn-warning" onClick={operatorType}>x</Button>
+        <div class="d-flex justify-content-end">
+          <Button className="btn btn-dark btn-lg rounded-circle" onClick={inputNum}>7</Button>
+          <Button className="btn btn-dark btn-lg rounded-circle" onClick={inputNum}>8</Button>
+          <Button className="btn btn-dark btn-lg rounded-circle "  onClick={inputNum}>9</Button>
+          <Button className="btn btn-warning btn-lg rounded-circle"  onClick={operatorType}>x</Button>
         </div>
-        <div id="btn-row3">
-          <Button onClick={inputNum}>4</Button>
-          <Button onClick={inputNum}>5</Button>
-          <Button onClick={inputNum}>6</Button>
-          <Button class="btn btn-warning" onClick={operatorType}>-</Button>
+        <div class="d-flex justify-content-end">
+          <Button className="btn btn-dark btn-lg rounded-circle" onClick={inputNum}>4</Button>
+          <Button className="btn btn-dark btn-lg rounded-circle" onClick={inputNum}>5</Button>
+          <Button className="btn btn-dark btn-lg rounded-circle"  onClick={inputNum}>6</Button>
+          <Button className="btn btn-warning btn-lg rounded-circle"   onClick={operatorType}>-</Button>
         </div>
-        <div id="btn-row4">
-          <Button onClick={inputNum}>1</Button>
-          <Button onClick={inputNum}>2</Button>
-          <Button onClick={inputNum}>3</Button>
-          <Button class="btn btn-warning" onClick={operatorType}>+</Button>
+        <div class="d-flex justify-content-end">
+          <Button className="btn btn-dark btn-lg rounded-circle"  onClick={inputNum}>1</Button>
+          <Button className="btn btn-dark btn-lg rounded-circle"  onClick={inputNum}>2</Button>
+          <Button className="btn btn-dark btn-lg rounded-circle" onClick={inputNum}>3</Button>
+          <Button className="btn btn-warning btn-lg rounded-circle"   onClick={operatorType}>+</Button>
         </div>
-        <div id="btn-row5">
-          <Button onClick={inputNum}>0</Button>
-          <Button>.</Button>
-          <Button class="btn btn-warning" onClick={equals}>=</Button>
+        <div class="d-flex justify-content-end">
+          <Button  className="btn btn-dark btn-lg rounded-pill" onClick={inputNum}>0</Button>
+          <Button className="btn btn-dark btn-lg rounded-circle">.</Button>
+          <Button className="btn btn-warning btn-lg rounded-circle"  onClick={equals}>=</Button>
 
+        </div>
         </div>
       </div>
     </div>
+  
   );
 }
 
